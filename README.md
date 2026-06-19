@@ -1,63 +1,33 @@
-<div align="center">
-
 # WatchTower
 
-**Open-source early warning for publicly-advertised mass-gathering events.**
+WatchTower looks through public, open-source signals to find gatherings that are being
+advertised in the open (for example, the Florida "teen takeover" events), and turns what it
+finds into a structured report: which events were advertised, where, how many separate public
+sources mention each one, and how confident the read is.
 
-A product by Tracecast LLC · OSINT for public-safety situational awareness
+It only uses public posts. It flags events, not people. No facial recognition, no biometrics.
 
-<img src="docs/cover.png" alt="WatchTower OSINT assessment cover" width="520">
+<img src="docs/cover.png" alt="WatchTower report cover" width="500">
 
-</div>
+## What's in the report
 
----
+- A short summary of what was found, with the headline numbers
+- Charts: activity by month, by city, by outcome, by venue type
+- An event log with source counts and a confidence rating on each event
+- Flyer reading that pulls the place, date, and time straight off public flyer images
+- A live scan of what is being advertised right now
+- A section on what continuous monitoring would add over a one-off report
 
-## What it is
+## How it's built
 
-Some public-safety incidents are advertised in the open before they happen. WatchTower
-surfaces and structures that **public advertising** from open-source signals, then produces a
-clean intelligence brief: distinct events, where each was advertised, how strongly it is
-corroborated across independent public sources, and a confidence level for each.
+Python, an LLM for reading flyer images, public search, and automated PDF generation. The
+implementation and the methodology are kept private; this repo is just an overview.
 
-It is **detection of public advertising, not prediction of crime,** and it reports **events,
-never individuals.**
+## Limits and ground rules
 
-## What it produces
+- Public data only. No logins, no scraping behind a sign-in.
+- Events, never individuals. No biometrics or facial recognition.
+- Not crime prediction, and not meant for evidence.
+- The matching is not perfect, so anything low-confidence is flagged instead of stated as fact.
 
-A multi-section OSINT assessment (PDF):
-
-- **Key judgments** and at-a-glance metrics
-- **Pattern analysis** (activity over time, by location, by outcome, by venue type)
-- An **event log** with corroboration counts and per-row confidence
-- **Flyer extraction** read directly from public images
-- A live **on-demand scan** of what is being advertised now
-- **Forward capability** — what continuous, live early warning delivers
-- Stated **collection method, constraints, and handling rules**
-
-## Operating guardrails
-
-WatchTower is built to be defensible by design:
-
-- **Public, logged-out sources only** — no authentication, no fake accounts
-- **No facial recognition, no biometrics — ever**
-- **Events, not individuals**
-- Links back to public sources; **minimal retention**
-- **Not** predictive policing, and **not** evidentiary
-- Context classification separates genuine signals from benign look-alikes, with a
-  confidence level; low-confidence items are flagged, not asserted
-
-## Tech
-
-Python · large-language-model vision for image understanding · open-source search ·
-automated report generation.
-
-## Status
-
-Working prototype. This is a real, privately-developed product; the implementation and
-methodology are kept private. This repository is a public overview of the project.
-
----
-
-<div align="center">
-<sub>WatchTower · Tracecast LLC · Open-source · public data only</sub>
-</div>
+Built by Tracecast LLC.
