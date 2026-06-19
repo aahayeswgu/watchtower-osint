@@ -1,33 +1,53 @@
 # WatchTower
 
-WatchTower looks through public, open-source signals to find gatherings that are being
-advertised in the open (for example, the Florida "teen takeover" events), and turns what it
-finds into a structured report: which events were advertised, where, how many separate public
-sources mention each one, and how confident the read is.
+I started WatchTower after watching a run of "teen takeover" events blow up across Florida
+beaches and malls in 2026, including one close to home. These gatherings get advertised in the
+open before they happen, and then the original posts tend to vanish. I wanted to find out whether
+a small, public-only tool could catch that advertising early and turn it into something a person
+could actually act on. This one is a passion project. I built it because I wanted to.
 
-It only uses public posts. It flags events, not people. No facial recognition, no biometrics.
+WatchTower reads public, open-source signals, separates the real disorder-trend events from the
+benign look-alikes (a city parks-and-rec teen night is not the same thing), reads the flyers, and
+writes it all up as a short, structured intelligence brief. Public data only. Events, never
+individuals. No facial recognition.
 
-<img src="docs/cover.png" alt="WatchTower report cover" width="500">
+## A look at the output
 
-## What's in the report
+<img src="docs/cover.png" width="430">
 
-- A short summary of what was found, with the headline numbers
-- Charts: activity by month, by city, by outcome, by venue type
-- An event log with source counts and a confidence rating on each event
-- Flyer reading that pulls the place, date, and time straight off public flyer images
-- A live scan of what is being advertised right now
-- A section on what continuous monitoring would add over a one-off report
+<img src="docs/assessment.png" width="430">
 
-## How it's built
+<img src="docs/forward.png" width="430">
 
-Python, an LLM for reading flyer images, public search, and automated PDF generation. The
-implementation and the methodology are kept private; this repo is just an overview.
+## How it's put together
 
-## Limits and ground rules
+High level only. The actual collection logic, prompts, and scoring are private.
 
-- Public data only. No logins, no scraping behind a sign-in.
-- Events, never individuals. No biometrics or facial recognition.
+```
+watchtower/
+├── collect/     pull public, open-source signals across platforms
+├── classify/    sort real trend events from benign look-alikes, with a confidence level
+├── extract/     read flyer images for place / date / time
+├── score/       rank events by how many independent public sources agree
+└── report/      render the OSINT brief (PDF)
+```
+
+## Ground rules I built in
+
+- Public, logged-out sources only. No logins, no fake accounts.
+- No facial recognition or biometrics, ever.
+- Events, not individuals.
+- Links back to public sources, minimal retention.
 - Not crime prediction, and not meant for evidence.
-- The matching is not perfect, so anything low-confidence is flagged instead of stated as fact.
+
+## Tech
+
+Python, a large-language model for reading flyer images and sorting signals, public search, and
+automated PDF generation.
+
+## Status
+
+Working prototype, built and tested on real Florida events. The implementation and methodology
+are private; this repo is an overview of what it does and why I made it.
 
 Built by Tracecast LLC.
