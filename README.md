@@ -1,17 +1,42 @@
 # WatchTower
 
-I started WatchTower after watching a run of "teen takeover" events blow up across Florida
-beaches and malls in 2026, including one close to home. These gatherings get advertised in the
-open before they happen, and then the original posts tend to vanish. I wanted to find out whether
-a small, public-only tool could catch that advertising early and turn it into something a person
-could actually act on. This one is a passion project. I built it because I wanted to.
+Open-source early warning for publicly advertised mass gatherings.
 
-WatchTower reads public, open-source signals, separates the real disorder-trend events from the
-benign look-alikes (a city parks-and-rec teen night is not the same thing), reads the flyers, and
-writes it all up as a short, structured intelligence brief. Public data only. Events, never
-individuals. No facial recognition.
+Large, unsanctioned gatherings rarely come out of nowhere. They are organized and promoted in the
+open, on public social media, days before they happen, and the original posts tend to disappear
+once the crowd arrives. The people who have to plan for the strain on a community are often the
+last to know.
+
+WatchTower closes that gap. It reads public, open-source signals, separates real disorder-trend
+events from benign look-alikes, reads the event flyers, and turns the advertising window into lead
+time. The output is a short, structured intelligence brief that a person can act on before the
+event, not after it.
+
+This is a forward-looking tool. The value is not documenting what already happened. It is surfacing
+what is being organized for next weekend while there is still time to plan for it.
+
+## What it is built to do
+
+- Detect publicly advertised gatherings early, while they are still being promoted.
+- Separate a real disorder-trend event from a sanctioned or benign one. A city parks-and-rec teen
+  night is not the same thing as a flash gathering, and the tool is built to tell them apart.
+- Read flyers and posts for the place, date, and time.
+- Rank events by how many independent public sources corroborate the same one.
+- Render it as a concise brief with a confidence level, sourced back to the public posts.
+
+## Guardrails come first
+
+These are not an afterthought. They are what separates a useful early-warning tool from a liability.
+
+- Public, logged-out sources only. No logins, no fake accounts, no private data.
+- Events, never individuals. No facial recognition, no biometrics, ever.
+- Decision support, not prediction of people. It flags advertised events, not persons.
+- Links back to public sources, with minimal retention.
+- Not crime prediction, and not built for enforcement or evidence.
 
 ## A look at the output
+
+Illustrative samples. Fictional data, public format only.
 
 <img src="docs/cover.png" width="430">
 
@@ -19,9 +44,9 @@ individuals. No facial recognition.
 
 <img src="docs/forward.png" width="430">
 
-## How it's put together
+## How it is put together
 
-High level only. The actual collection logic, prompts, and scoring are private.
+High level only. The collection logic, prompts, and scoring are private.
 
 ```
 watchtower/
@@ -29,16 +54,8 @@ watchtower/
 ├── classify/    sort real trend events from benign look-alikes, with a confidence level
 ├── extract/     read flyer images for place / date / time
 ├── score/       rank events by how many independent public sources agree
-└── report/      render the OSINT brief (PDF)
+└── report/      render the brief (PDF)
 ```
-
-## Ground rules I built in
-
-- Public, logged-out sources only. No logins, no fake accounts.
-- No facial recognition or biometrics, ever.
-- Events, not individuals.
-- Links back to public sources, minimal retention.
-- Not crime prediction, and not meant for evidence.
 
 ## Tech
 
@@ -47,7 +64,7 @@ automated PDF generation.
 
 ## Status
 
-Working prototype, built and tested on real Florida events. The implementation and methodology
-are private; this repo is an overview of what it does and why I made it.
+Working prototype, built and tested against real, publicly advertised events. The implementation
+and methodology are private. This repo is an overview of what it does and why it exists.
 
 Built by Tracecast LLC.
