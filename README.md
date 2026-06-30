@@ -68,3 +68,7 @@ Working prototype, built and tested against real, publicly advertised events. Th
 and methodology are private. This repo is an overview of what it does and why it exists.
 
 Built by Tracecast LLC.
+
+---
+
+![Tracecast LLC - custom signal engines for B2B](docs/tracecast-logo.png)
